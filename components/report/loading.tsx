@@ -9,6 +9,7 @@ const Loading: React.FC = () => {
         alt="Cargando..."
         width={128}
         height={128}
+        className="animate-breathing"
       />
     </div>
   );
