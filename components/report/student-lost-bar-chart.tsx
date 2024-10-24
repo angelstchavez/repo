@@ -47,6 +47,7 @@ export default class StudentLossChart extends PureComponent<
     // Transformar los datos para el gráfico
     const chartData = labels.map((label) => ({
       name: label,
+      // Convertir los datos de string a número
       lostStudents: parseFloat(props.subjectData[label] || "0"),
     }));
 
@@ -83,8 +84,12 @@ export default class StudentLossChart extends PureComponent<
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
+            <YAxis
+              tickFormatter={(value) => `${value}%`} // Mostrar el valor como porcentaje
+            />
+            <Tooltip
+              formatter={(value: number) => `${value}%`} // Mostrar porcentajes en el tooltip
+            />
             <Legend />
             <Bar
               dataKey="lostStudents"
