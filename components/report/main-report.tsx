@@ -7,6 +7,7 @@ import SubjectSelect from "./subject-select";
 import StudentLossChart from "./student-lost-bar-chart";
 import Loading from "./loading";
 import Image from "next/image";
+import StudentLossDonutChart from "./student-lost-donut-chart";
 
 const MainReport = () => {
   const [selectedCycle, setSelectedCycle] = useState<string>("");
@@ -73,14 +74,15 @@ const MainReport = () => {
                 Reporte de {selectedSubject}
               </p>
               <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-                <div className="flex-1">
+                <div className="flex space-x-2">
                   <StudentLossChart subjectData={subjectData} />
+                  <StudentLossDonutChart subjectData={subjectData} />
                 </div>
               </div>
             </div>
           )}
           <div className="mt-2 text-center text-zinc-400">
-            Ingeniería de Sistemas
+            Ingeniería de Sistemas - 2024
           </div>
         </>
       )}
