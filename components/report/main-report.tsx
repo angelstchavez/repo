@@ -38,7 +38,7 @@ const MainReport = () => {
               Consultar reporte de tasa de mortalidad académica:
             </p>
           </div>
-          <div className="mt-2 space-y-2">
+          <div className="mt-2 flex space-x-2">
             <CycleSelect onSelect={setSelectedCycle} />
             <SubjectSelect
               ciclo={selectedCycle}
@@ -52,9 +52,6 @@ const MainReport = () => {
                 Reporte de {selectedSubject}
               </p>
               <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-                <div className="flex-1">
-                  <StudentLossChart selectedSubject={selectedSubject} />
-                </div>
                 <div className="flex-1">
                   <StudentLossChart selectedSubject={selectedSubject} />
                 </div>

@@ -67,7 +67,7 @@ export default class StudentLossChart extends PureComponent<
       <div className="border rounded-md">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            width={400}
+            width={800}
             height={300}
             data={this.state.data}
             margin={{
