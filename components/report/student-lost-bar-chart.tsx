@@ -1,4 +1,3 @@
-// StudentLossChart.tsx
 import React, { PureComponent } from "react";
 import {
   BarChart,
@@ -30,15 +29,8 @@ const labels = [
   "2024-1",
 ];
 
-const generateRandomData = () => {
-  return labels.map((label) => ({
-    name: label,
-    lostStudents: Math.floor(Math.random() * 1000),
-  }));
-};
-
 interface StudentLossChartProps {
-  selectedSubject: string;
+  subjectData: { [key: string]: string };
 }
 
 interface StudentLossChartState {
@@ -51,14 +43,26 @@ export default class StudentLossChart extends PureComponent<
 > {
   constructor(props: StudentLossChartProps) {
     super(props);
+
+    // Transformar los datos para el gráfico
+    const chartData = labels.map((label) => ({
+      name: label,
+      lostStudents: parseFloat(props.subjectData[label] || "0"),
+    }));
+
     this.state = {
-      data: generateRandomData(),
+      data: chartData,
     };
   }
 
   componentDidUpdate(prevProps: StudentLossChartProps) {
-    if (this.props.selectedSubject !== prevProps.selectedSubject) {
-      this.setState({ data: generateRandomData() });
+    if (this.props.subjectData !== prevProps.subjectData) {
+      // Actualiza los datos cuando cambian las props
+      const chartData = labels.map((label) => ({
+        name: label,
+        lostStudents: parseFloat(this.props.subjectData[label] || "0"),
+      }));
+      this.setState({ data: chartData });
     }
   }
 
