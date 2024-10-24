@@ -30,11 +30,10 @@ const labels = [
   "2024-1",
 ];
 
-// Función para generar datos aleatorios
 const generateRandomData = () => {
   return labels.map((label) => ({
     name: label,
-    lostStudents: Math.floor(Math.random() * 100), // Aleatorio entre 0 y 99
+    lostStudents: Math.floor(Math.random() * 1000),
   }));
 };
 
@@ -65,30 +64,32 @@ export default class StudentLossChart extends PureComponent<
 
   render() {
     return (
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          width={500}
-          height={300}
-          data={this.state.data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar
-            dataKey="lostStudents"
-            fill="#03A64A"
-            activeBar={<Rectangle fill="green" stroke="green" />}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="border rounded-md">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            width={400}
+            height={300}
+            data={this.state.data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar
+              dataKey="lostStudents"
+              fill="#03A64A"
+              activeBar={<Rectangle fill="#03d860" stroke="#03d860" />}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     );
   }
 }
